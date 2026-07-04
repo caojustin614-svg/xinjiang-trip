@@ -75,6 +75,12 @@
     display:flex;align-items:center;gap:14px;overflow-x:auto;
   }
   .nav-inner .brand{font-weight:800;letter-spacing:.04em;color:var(--teal-d);white-space:nowrap;font-size:.98rem;}
+  .plan-switch{
+    flex-shrink:0;text-decoration:none;font-size:.8rem;font-weight:700;
+    color:var(--gold);border:1px solid #e6d3a8;background:#fdf7e9;
+    padding:5px 13px;border-radius:100px;white-space:nowrap;transition:.2s;
+  }
+  .plan-switch:hover{background:#f7ecd2;}
   .nav-pills{display:flex;gap:7px;margin-left:auto;}
   .nav-pills a{
     flex-shrink:0;text-decoration:none;color:var(--muted);
@@ -197,6 +203,7 @@
 <nav>
   <div class="nav-inner">
     <span class="brand">北疆环线 ·8日</span>
+    <a class="plan-switch" href="plan9.html">↔ 方案二 · 伊犁轻松版 9日</a>
     <div class="nav-pills">
       <a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a>
       <a href="#d5">D5</a><a href="#d6">D6</a><a href="#d7">D7</a><a href="#d8">D8</a>
