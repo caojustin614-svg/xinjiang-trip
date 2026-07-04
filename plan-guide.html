@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>伊犁大环线 · 导游定制版 9天</title>
+<title>伊犁环线 · 导游终版 8天</title>
 <style>
   :root{
     --paper:#f6f4ee;
@@ -123,6 +123,8 @@
   .chip.stay::before{content:"🛏 ";}
   .chip.ease{background:#eef6ee;color:#3f7b45;border-color:#d3e8d5;}
   .chip.ease::before{content:"🌿 ";}
+  .chip.hike{background:#fdf0e8;color:#b05e2a;border-color:#f0d8c2;}
+  .chip.hike::before{content:"🥾 ";}
 
   .day-body{padding:22px 28px 28px;}
   .day-desc{color:#3a4649;font-size:.98rem;}
@@ -180,13 +182,13 @@
   <div class="hero-bg"></div>
   <div class="hero-grad"></div>
   <div class="hero-inner">
-    <div class="kicker">Ili Grand Loop · Guide Edition</div>
-    <h1>伊犁大环线 · 导游定制版</h1>
-    <div class="sub">天池 · 赛里木湖 · 伊昭公路 · 昭苏夏塔 · 喀拉峻 · 那拉提 · 巴音布鲁克 · 独库北段</div>
+    <div class="kicker">Ili Loop · Final Guide Edition</div>
+    <h1>伊犁环线 · 导游终版</h1>
+    <div class="sub">S101丹霞 · 赛里木湖 · 伊昭公路 · 夏塔徒步 · 喀拉峻 · 那拉提 · 巴音布鲁克 · 独库公路</div>
     <div class="hero-stats">
-      <div class="stat"><b>9</b> 天 8 晚</div>
-      <div class="stat">车程约 <b>2100</b> km</div>
-      <div class="stat">含 <b>1</b> 个原地休整日</div>
+      <div class="stat"><b>8</b> 天 7 晚</div>
+      <div class="stat">夏塔 <b>全天</b> 徒步专属日</div>
+      <div class="stat"><b>不赶夜路</b> · 拆段行驶</div>
     </div>
   </div>
   <div class="scroll-hint">向下滚动 ↓</div>
@@ -194,19 +196,19 @@
 
 <nav>
   <div class="nav-inner">
-    <span class="brand">导游版 ·9日</span>
+    <span class="brand">导游终版 ·8日</span>
     <a class="plan-switch" href="index.html">方案一 · 北疆8日</a>
     <a class="plan-switch" href="plan9.html">方案二 · 伊犁9日</a>
     <div class="nav-pills">
       <a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a>
-      <a href="#d5">D5</a><a href="#d6">D6</a><a href="#d7">D7</a><a href="#d8">D8</a><a href="#d9">D9</a>
+      <a href="#d5">D5</a><a href="#d6">D6</a><a href="#d7">D7</a><a href="#d8">D8</a>
     </div>
   </div>
 </nav>
 
 <section class="overview">
   <div class="section-title"><span class="en">Route Overview</span>环线总览</div>
-  <p style="color:var(--muted);max-width:760px;">导游定制的伊犁深度环线：全程只在凉爽的天山高地活动，比常规路线多了伊昭公路、昭苏夏塔与阔克苏大峡谷；D5 原地休整不换酒店，长途日全部拆段休息；最后一天走独库公路北段精华收官。</p>
+  <p style="color:var(--muted);max-width:760px;">导游给出的最终版行程：D1 换走 S101 百里丹霞公路开场，避开高速的枯燥；D4 整天只给夏塔徒步，直面木扎尔特冰川；D5 续住特克斯不搬行李；D7 走独库中段、D8 走独库北段，把独库精华拆成两天消化，全程不赶夜路。</p>
   <div class="route-line" id="routeLine"></div>
 </section>
 
@@ -221,121 +223,110 @@
 <script>
 function wimg(name,w){return "https://commons.wikimedia.org/wiki/Special:FilePath/"+encodeURIComponent(name)+"?width="+(w||1000);}
 
-const badgeColors=["#4f7bb0","#2f7d8a","#c1873a","#3f9b74","#4f9b57","#7a6bb0","#0e7c86","#b5603a","#a8552f"];
+const badgeColors=["#c1873a","#2f7d8a","#7a6bb0","#b05e2a","#3f9b74","#4f9b57","#0e7c86","#a8552f"];
 
 const trip=[
  {
-  day:1, from:"乌鲁木齐", to:"天山天池", stay:"乌鲁木齐市区",
-  dist:"往返约 200 km", drive:"共约 3 小时",
-  extra:["极致轻松","只排一个景点"],
-  ease:"睡饱出发 · 不赶夜路",
-  desc:"车程约1.5小时，全天只安排天池一个景点。睡饱出发，游览瑶池、西王母祖庙、环湖栈道，可自选游船；中午景区简餐，下午16点左右返回乌鲁木齐休整。晚上逛国际大巴扎采购零食和防寒衣物，储备体力。",
-  tip:"天池需换乘景区区间车；若当天从北京飞来，建议前一晚抵达乌鲁木齐，D1才能睡饱再出发。",
+  day:1, from:"乌鲁木齐", to:"S101百里丹霞 · 奎屯", stay:"奎屯市区",
+  dist:"约 230 km", drive:"约 4 小时",
+  extra:["国防公路","边走边停"],
+  ease:"不用早起 · 节奏舒缓",
+  desc:"不用早起出发，自驾穿行S101国防公路，沿途硫磺沟丹霞、肯斯瓦特水库、安集海峡谷边走边停自由拍照。中途服务区简单用餐，傍晚抵达奎屯办理入住。晚间采购夏塔徒步所需零食、保温杯、高倍防晒、防风冲锋衣，为徒步行程备好物资。",
   spots:[
-   {name:"天山天池",img:"Tianshan Tianchi (53918625974).jpg",intro:"博格达峰下的高山冰碛湖，古称「瑶池」。湖水碧绿如镜，环湖栈道平缓好走，湖区比市区凉爽5–8度。"},
-   {name:"博格达峰远眺",img:"天山天池2 - panoramio.jpg",intro:"天晴时海拔5445米的博格达雪顶清晰可见，与湖面倒影构成天山最经典画面。"},
-   {name:"新疆国际大巴扎",img:"新疆国际大巴扎一角.jpg",intro:"全国规模最大的巴扎建筑群，晚上来正热闹：烤肉、干果、手工艺品，顺便补齐防寒装备。"}
+   {name:"硫磺沟丹霞",img:"Liuhuanggu Agnes Lin 1.jpg",intro:"S101沿线的红层丹霞地貌，赭红色山体层理分明，光影斜照时沟壑如烈焰翻涌，是这条国防公路的第一场视觉盛宴。"},
+   {name:"肯斯瓦特水库",g:"g2",intro:"玛纳斯河上的高山水库，碧绿的库水嵌在赭红峡谷之间，S101跨库大桥是俯瞰全景的最佳位置。"},
+   {name:"安集海大峡谷",g:"g1",intro:"安集海河切出的百米深谷，红灰相间的辫状河道在谷底蜿蜒铺开，站在崖边俯瞰如同大地的调色盘。"}
   ]
  },
  {
-  day:2, from:"乌鲁木齐", to:"赛里木湖 · 果子沟", stay:"清水河镇",
-  dist:"约 540 km", drive:"6–6.5 小时（分两段）",
-  extra:["精河午休2小时","东门入园环湖"],
-  ease:"拆段行驶 · 杜绝疲劳驾驶",
-  desc:"全程高速，精河服务区停留午饭加午休2小时，杜绝长时间连续驾驶。下午抵达赛里木湖东门入园自驾环湖，打卡S湾、月亮湾、点将台、松树头，远景拍摄果子沟大桥。傍晚入住清水河镇，食宿选择丰富，避开湖区旺季高价住宿。",
+  day:2, from:"奎屯", to:"赛里木湖 · 清水河镇", stay:"清水河镇",
+  dist:"约 285 km", drive:"约 4.5 小时",
+  extra:["环湖4小时+","果子沟日落"],
+  ease:"中午到湖 · 时间充裕",
+  desc:"沿连霍高速西行，中午抵达赛里木湖东门，逆时针环湖游玩四小时以上，依次打卡克勒涌珠、天鹅湾、亲水滩等点位，近距离欣赏雪山湖泊景致。傍晚前往果子沟大桥观景台拍摄日落，之后入住清水河镇——往返赛里木湖、霍城都很方便。",
   spots:[
-   {name:"赛里木湖",img:"Sayram Lake on north bank.jpg",intro:"「大西洋最后一滴眼泪」，高山冷水湖湛蓝清澈。东门进入后沿环湖公路顺时针走，每个湾都值得停车。"},
-   {name:"点将台 · 湖畔灯塔",img:"Lighthouse on the shore of Sayram Lake.jpg",intro:"西岸经典机位，灯塔孤立湖畔，背后雪山连绵，是环湖打卡照的定番构图。"},
-   {name:"果子沟大桥",img:"Guozigou Bridge far view.jpg",intro:"新疆第一座斜拉桥凌空横跨峡谷，从赛湖南岸高处远眺全景最壮观。"}
+   {name:"赛里木湖",img:"Sayram Lake on north bank.jpg",intro:"「大西洋最后一滴眼泪」，高山冷水湖湛蓝清澈。东门入园逆时针环湖，每个湖湾都值得停车慢看。"},
+   {name:"天鹅湾 · 亲水滩",img:"The shore of Sayram Lake.jpg",intro:"环湖路上最亲水的一段，卵石滩缓缓没入湖中，雪山在对岸一字排开，是近距离感受湖水透明度的地方。"},
+   {name:"果子沟大桥日落",img:"Guozigou Bridge far view.jpg",intro:"新疆第一座斜拉桥凌空横跨峡谷，傍晚从观景台看桥身披上金光，是一天的收尾大片。"}
   ]
  },
  {
-  day:3, from:"赛湖日出", to:"霍城 · 伊宁", stay:"伊宁市",
-  dist:"约 150 km", drive:"约 2.5 小时",
-  extra:["清晨光线最佳","薰衣草免费打卡"],
-  ease:"上午湖边慢游 · 下午老城闲逛",
-  desc:"清晨再次进入赛里木湖看日出，湖面晨光最美，游玩至中午离开。途经霍城薰衣草产区（6–7月花期）在路边免费打卡拍照，不进收费庄园。约2小时车程抵达伊宁，下午自由逛喀赞其蓝色民俗村、六星街，尝手工冰淇淋和伊犁美食。",
-  tip:"赛湖二次入园是否需重新购票，请提前与导游确认当季政策。",
+  day:3, from:"清水河", to:"霍城 · 伊昭公路 · 昭苏", stay:"昭苏县城",
+  dist:"约 270 km", drive:"约 4.5 小时",
+  extra:["赛湖日出自选","翻越乌孙山"],
+  ease:"只赶路+观光 · 存体力给夏塔",
+  desc:"自愿早起可二次进入赛里木湖观赏日出；之后途经霍城薰衣草庄园，六七月份正值花期可驻足游览。中午驶入伊昭公路翻越乌孙山脉，高山草原、盘山道路风光随时停靠取景，下午平稳抵达昭苏县城。本日不安排高强度游玩，把体力全部留给次日的夏塔徒步。",
+  tip:"伊昭公路为季节性开放且有车型限制，封路时改走特克斯方向绕行，出发前与导游确认路况。",
   spots:[
-   {name:"赛里木湖日出",img:"赛里木湖的日出 - panoramio.jpg",intro:"清晨的赛湖是一天中最安静的时刻，朝霞染红湖面，光线柔和通透，摄影黄金档。"},
-   {name:"霍城薰衣草田（6–7月）",g:"g5",intro:"中国的薰衣草之乡，花期6月中旬至7月上旬，公路两侧紫色花田绵延，路边即可拍照。"},
-   {name:"伊宁老城",img:"Along the Ili River, Yining, Xinjiang 2020-10-03.jpg",intro:"喀赞其的蓝房子、六星街的手风琴博物馆、伊犁河畔的日落，边城的松弛感拉满。"}
+   {name:"赛里木湖日出（自选）",img:"赛里木湖的日出 - panoramio.jpg",intro:"清晨的赛湖安静通透，朝霞染红湖面。睡饱优先，想拍再去——这天的主题是养精蓄锐。"},
+   {name:"霍城薰衣草庄园（6–7月）",g:"g5",intro:"中国薰衣草之乡，花期6月中旬至7月上旬，紫色花田沿公路铺开，正当季就下车走一走。"},
+   {name:"伊昭公路",g:"g3",intro:"被誉为「小独库」的高山公路，翻越乌孙山，草甸、云杉、盘山弯道一路展开，风景密度极高。"}
   ]
  },
  {
-  day:4, from:"伊宁", to:"伊昭公路 · 夏塔", stay:"昭苏县城",
-  dist:"约 250 km", drive:"累计约 4 小时",
-  extra:["小独库","轻徒步不拉练"],
-  ease:"边走边停 · 只做短途徒步",
-  desc:"伊昭公路被誉为「小独库」，盘山公路边走边停观景，车程约2.5小时。下午游览夏塔景区，只安排轻松短途徒步，远眺木扎尔特冰川与雪莲峰，不安排高强度长线；傍晚返回昭苏县城入住。",
-  tip:"伊昭公路为季节性开放（通常6–10月）且有车型限制，封路时改走特克斯方向绕行，请出发前确认。",
+  day:4, from:"昭苏", to:"夏塔徒步专属日", stay:"昭苏县城（续住）",
+  dist:"往返约 120 km", drive:"单程约 1 小时",
+  extra:["全天只排一个景点","往返8km徒步"],
+  hike:"徒步4–5小时 · 直面冰川",
+  desc:"全天仅安排夏塔一处，无其他行程挤占时间。早上八点出发，一小时抵达景区大门；乘长线区间车约五十分钟到温泉中转站，换电瓶车抵达将军桥徒步起点。徒步路线：将军桥经1–4号卡拉房子前行至鲜花台，直面木扎尔特冰川，往返约八公里、耗时四至五小时，途中可就地野餐休整。徒步结束后返回昭苏县城，泡澡舒缓疲惫。",
+  tip:"体力有限走到三号房子即可折返，观景视野依旧出色；防晒、防风、饮水按前晚采购清单带齐。",
   spots:[
-   {name:"伊昭公路",g:"g3",intro:"翻越乌孙山的高山公路，草甸、云杉、盘山弯道一路展开，风景密度极高，是伊犁最美的自驾路段之一。"},
-   {name:"夏塔峡谷",img:"新疆-昭苏-夏塔峡谷 - panoramio.jpg",intro:"古代夏塔古道的入口，峡谷两侧雪山夹峙，木扎尔特河奔流其间，乘区间车+短途步行即可饱览。"},
-   {name:"雪莲峰远眺",img:"Xuelian Feng from Xiate Hot Springs.jpg",intro:"从夏塔温泉方向远眺天山雪莲峰，冰川雪岭在草原尽头一字排开，是南天山最震撼的天际线。"}
+   {name:"夏塔峡谷",img:"新疆-昭苏-夏塔峡谷 - panoramio.jpg",intro:"古代夏塔古道的入口，峡谷两侧雪山夹峙，木扎尔特河奔流其间，徒步全程与雪山同框。"},
+   {name:"木扎尔特冰川 · 鲜花台",img:"Xuelian Feng from Xiate Hot Springs.jpg",intro:"徒步终点的高光时刻：雪莲峰与木扎尔特冰川在草甸尽头一字排开，是南天山最震撼的天际线。"},
+   {name:"昭苏县城休整",img:"昭苏，黄昏 - panoramio.jpg",intro:"天马之乡的傍晚金黄绵软，徒步归来泡个热水澡，再来一顿马肉马肠特色餐犒劳自己。"}
   ]
  },
  {
-  day:5, from:"昭苏", to:"全天休闲", stay:"昭苏（原地续住）",
-  dist:"县域内 · 约 50 km", drive:"1 小时内",
-  extra:["不换酒店","行程最松弛一天"],
-  ease:"免收拾行李 · 午后酒店午休",
-  desc:"原地续住，免去搬运行李的劳累。上午闲逛昭苏草原、油菜花海（7月盛花）、天马文化园，午后回酒店午休适应高原气候；傍晚县城散步，品尝马肉马肠特色餐。",
+  day:5, from:"昭苏", to:"喀拉峻 · 阔克苏大峡谷", stay:"特克斯（续住）",
+  dist:"约 70 km", drive:"约 1.5 小时",
+  extra:["索道上山","木栈道漫步"],
+  ease:"不换酒店 · 累了随时回房",
+  desc:"夏塔徒步休整完毕，今日轻松转场特克斯，全天深度游玩喀拉峻草原、阔克苏大峡谷。乘索道上山观赏人体草原、阔克苏九曲河道，沿平缓木栈道悠闲漫步，全程无高强度爬坡。不用更换酒店，省去收拾行李麻烦，累了随时回酒店午睡，游玩自由度极高。",
   spots:[
-   {name:"昭苏草原",img:"Zhaosu, Ili, Xinjiang, China - panoramio - neverdance (1).jpg",intro:"雪山环抱的高原盆地，全国著名的天马之乡，七月油菜花与紫苏花海铺满大地。"},
-   {name:"昭苏黄昏",img:"昭苏，黄昏 - panoramio.jpg",intro:"傍晚的昭苏田野光线金黄绵软，县城生活节奏缓慢，是全程最不像赶路的一天。"}
-  ]
- },
- {
-  day:6, from:"昭苏", to:"特克斯 · 喀拉峻", stay:"特克斯县",
-  dist:"约 100 km", drive:"约 2 小时",
-  extra:["八卦城","世界自然遗产"],
-  ease:"先放行李再进景区",
-  desc:"车程1.5小时抵达特克斯，先放行李，下午进喀拉峻：主打阔克苏大峡谷、人体草原网红机位，猎鹰台浅游览。傍晚返回八卦城，逛离街民俗夜市。",
-  tip:"喀拉峻区间车分东西线，人体草原在西喀拉峻（阔克苏）方向，购票时说清线路。",
-  spots:[
-   {name:"特克斯八卦城",img:"新疆-特克斯-八卦城-之一卦-我在城中心 - panoramio.jpg",intro:"全国唯一按八卦布局的县城，八条主街辐射展开、城内没有红绿灯，登观景塔一目了然。"},
    {name:"喀拉峻草原",img:"Kalajun Grassland.jpg",intro:"世界自然遗产地，丘陵草原如波浪起伏，六月野花满坡，「立体草原」名不虚传。"},
-   {name:"阔克苏大峡谷 · 人体草原",g:"g2",intro:"阔克苏河切出的深谷蜿蜒如龙，山脊草坡在侧光下勾勒出柔美曲线，是喀拉峻最出名的机位。"}
+   {name:"阔克苏大峡谷 · 人体草原",g:"g2",intro:"阔克苏河切出的深谷蜿蜒如龙，侧光下的山脊草坡勾勒出柔美曲线，是喀拉峻最出名的机位。"},
+   {name:"特克斯八卦城",img:"新疆-特克斯-八卦城-之一卦-我在城中心 - panoramio.jpg",intro:"全国唯一按八卦布局的县城，八条主街辐射展开、没有红绿灯，傍晚逛离街民俗夜市正好。"}
   ]
  },
  {
-  day:7, from:"特克斯", to:"那拉提", stay:"那拉提镇",
-  dist:"约 200 km", drive:"约 3 小时",
-  extra:["新源午餐休整","不刷完全部景点"],
-  ease:"骑马漫步为主 · 早回酒店",
-  desc:"车程约3小时，中途新源县城停靠午餐加长时间休整。下午慢悠悠游览那拉提河谷草原，骑马、草原漫步休闲为主，不一次性刷完空中草原全部景点，早回酒店休息。",
+  day:6, from:"特克斯", to:"巩留 · 那拉提", stay:"那拉提镇区",
+  dist:"约 260 km", drive:"约 4 小时",
+  extra:["河谷风光随停","轻度项目为主"],
+  ease:"保留体力 · 不肆意消耗",
+  desc:"顺伊犁河谷向东行进，途经巩留一带河谷草原风光，风景合意就临时靠边停车打卡。下午抵达那拉提办理入住，简单逛逛河谷草原外围，体验骑马、草原下午茶等轻度项目。",
   spots:[
-   {name:"那拉提 · 河谷草原",img:"Nalati Grassland 3.jpg",intro:"巩乃斯河两岸的低海拔草原，溪流蜿蜒、林木葱郁，骑马慢走最舒服的一段。"},
-   {name:"草原牧场风光",img:"Nalati Grassland 4, Xinjiang, China.jpg",intro:"毡房炊烟、牛羊散落，哈萨克牧场的日常就是最好的风景，傍晚光线尤佳。"}
+   {name:"巩留河谷 · 库尔德宁",img:"Kuerdening valley china.jpg",intro:"世界自然遗产雪岭云杉的核心分布区，云杉林顺山谷垂直铺展，是伊犁河谷最秀美的一段绿。"},
+   {name:"那拉提 · 河谷草原",img:"Nalati Grassland 3.jpg",intro:"巩乃斯河两岸的低海拔草原，溪流蜿蜒、林木葱郁，傍晚光线里的牧场最出片。"},
+   {name:"骑马 · 草原下午茶",img:"Nalati Grassland 4, Xinjiang, China.jpg",intro:"不赶景点的下午：骑马慢走一段河谷，找家毡房喝奶茶吃包尔萨克，把节奏彻底慢下来。"}
   ]
  },
  {
-  day:8, from:"那拉提", to:"巴音布鲁克", stay:"巴音布鲁克镇",
-  dist:"约 85 km", drive:"约 1.5 小时",
-  extra:["白天静养防高反","17点后入园"],
-  ease:"行车最短的一天",
-  desc:"车程仅1.5小时，是全程最轻松的行车日。巴音布鲁克海拔较高，白天在酒店午休静养规避高原反应；傍晚17点后入园，先游天鹅湖，然后守在九曲十八弯等日落奇观。",
-  tip:"镇上海拔约2400米，夜间接近0℃；日落后注意区间车收班时间，提前和司机约好接驳。",
+  day:7, from:"那拉提", to:"独库中段 · 巴音布鲁克", stay:"巴音布鲁克镇",
+  dist:"单程约 83 km", drive:"约 1.5 小时",
+  extra:["巩乃斯河谷观景","九曲十八弯日落"],
+  ease:"车程最短 · 上午缓慢出发",
+  desc:"车程轻松无压力，上午缓慢出发驶入独库公路中段，沿巩乃斯河谷一路观景，中午抵达巴音布鲁克小镇休整。下午进景区游览天鹅湖、高原湿地，傍晚前往九曲十八弯观景台等候落日奇观。",
+  tip:"当地海拔偏高、傍晚降温快，防风保暖外套务必穿戴；日落后注意区间车收班时间。",
   spots:[
-   {name:"天鹅湖",img:"Xinjiang Bayinbuluke China (3715440219).jpg",intro:"国家级大天鹅自然保护区，高山湿地水草丰美，运气好能看到天鹅列队巡湖。"},
-   {name:"九曲十八弯",img:"Kaidu Bayan-Bulak.jpg",intro:"开都河在草原上蜿蜒出九道河湾，日落时每道湾都映出一轮落日，「九个太阳」奇观全疆闻名。"},
-   {name:"巴音布鲁克草原",img:"Xinjiang Bayinbuluk Grassland(HDR2) (7109014119).jpg",intro:"全国第二大草原，四周雪山环抱，辽阔到看不到边界，落日后星空同样值得抬头。"}
+   {name:"独库中段 · 巩乃斯河谷",img:"River Kunges-GongNaiSi.jpg",intro:"巩乃斯河穿行于云杉与草甸之间，独库公路中段沿河而行，处处是随手即大片的观景位。"},
+   {name:"天鹅湖",img:"Xinjiang Bayinbuluke China (3715440219).jpg",intro:"国家级大天鹅自然保护区，高原湿地水草丰美，运气好能看到天鹅列队巡湖。"},
+   {name:"九曲十八弯",img:"Kaidu Bayan-Bulak.jpg",intro:"开都河在草原上蜿蜒出九道河湾，日落时每道湾映出一轮落日，「九个太阳」奇观全疆闻名。"}
   ]
  },
  {
-  day:9, from:"巴音布鲁克", to:"独库北段 · 乌鲁木齐", stay:"行程结束",
-  dist:"约 580 km", drive:"8–9 小时（全程最长）",
-  extra:["独库北段精华","多次服务区休整"],
-  desc:"早起走独库公路北段下山，雪山、森林沿途随停拍照，奎屯休整吃午饭；后半段连霍高速平稳返程，多处服务区中途停靠，傍晚抵达乌鲁木齐，行程完结。",
-  tip:"这是全程最累的一天且独库常有堵车；若需当晚飞回北京，只建议订21:30后的航班，更稳妥的做法是次日上午返京。",
+  day:8, from:"巴音布鲁克", to:"独库北段 · 乌鲁木齐", stay:"行程结束",
+  dist:"约 320 km 起 · 分段行驶", drive:"全天 · 不赶夜路",
+  extra:["独库一日四季","奎屯休整补给"],
+  desc:"清晨出发行驶独库公路北段，沿途雪山达坂、高山草甸风光随停随拍，体验独库一日四季的景观变化。中途在奎屯短暂停留休整补给，之后沿高速平稳返回乌鲁木齐，全程行程圆满结束。",
+  tip:"独库公路为季节性开放（通常6–10月）且旺季易堵车；若当晚需乘机返程，建议只订21:30后的航班或改次日出发。",
   spots:[
-   {name:"独库公路（北段）",img:"G217 Duku.jpg",intro:"天山纵贯线的精华段，翻越雪山达坂、穿过云杉峡谷，「一天历四季」的体验为整段旅程收官。"}
+   {name:"独库公路（北段）",img:"G217 Duku.jpg",intro:"天山纵贯线的精华段，翻越雪山达坂、穿过云杉峡谷，「一天历四季」的体验为整段旅程收官。"},
+   {name:"巴音布鲁克晨光",img:"Xinjiang Bayinbuluk Grassland(HDR2) (7109014119).jpg",intro:"出发前再看一眼晨光里的大草原——雪山环抱、辽阔无界，这是留给回程路上的最后一帧。"}
   ]
  }
 ];
 
-const cities=["乌鲁木齐","天池","赛里木湖","伊宁","昭苏·夏塔","特克斯","那拉提","巴音布鲁克","独库北段","乌鲁木齐"];
+const cities=["乌鲁木齐","S101丹霞","奎屯","赛里木湖","昭苏","夏塔","特克斯·喀拉峻","那拉提","巴音布鲁克","独库北段","乌鲁木齐"];
 document.getElementById("routeLine").innerHTML=cities.map((c,i)=>
   `<span class="city">${c}</span>`+(i<cities.length-1?`<span class="arrow">→</span>`:"")
 ).join("");
@@ -359,6 +350,7 @@ document.getElementById("days").innerHTML=trip.map(d=>{
 
   const chips=(d.extra||[]).map(e=>`<span class="chip">${e}</span>`).join("")
              +(d.ease?`<span class="chip ease">${d.ease}</span>`:"")
+             +(d.hike?`<span class="chip hike">${d.hike}</span>`:"")
              +`<span class="chip stay">${d.stay}</span>`;
 
   return `
