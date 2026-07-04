@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新疆北疆环线 · 8天包车自驾</title>
+<style>
+  :root{
+    --paper:#f6f4ee;
+    --ink:#232d2f;
+    --muted:#6b7a7d;
+    --line:#e3ded3;
+    --teal:#0e7c86;
+    --teal-d:#0a5f68;
+    --gold:#bd8a2c;
+    --card:#ffffff;
+    --shadow:0 6px 24px rgba(30,45,50,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── 顶部英雄区 ── */
+  .hero{
+    position:relative;
+    height:78vh;min-height:520px;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;color:#fff;overflow:hidden;
+    background:#0a3d44;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url("https://commons.wikimedia.org/wiki/Special:FilePath/Kanas%20Lake%2C%20Altay%2C%20China%20(Unsplash).jpg?width=2000");
+    background-size:cover;background-position:center;
+    filter:brightness(.62) saturate(1.05);
+    transform:scale(1.03);
+  }
+  .hero-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,30,34,.35),rgba(8,30,34,.15) 40%,rgba(8,30,34,.7));}
+  .hero-inner{position:relative;z-index:2;padding:0 24px;max-width:820px;}
+  .hero .kicker{
+    font-size:.8rem;letter-spacing:.5em;text-indent:.5em;
+    text-transform:uppercase;color:#ffe6b8;font-weight:500;margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:.06em;
+    line-height:1.2;text-shadow:0 3px 30px rgba(0,0,0,.4);
+  }
+  .hero .sub{margin-top:18px;font-size:clamp(.95rem,2.2vw,1.15rem);color:#eef3f0;font-weight:300;letter-spacing:.04em;}
+  .hero-stats{
+    margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  }
+  .hero-stats .stat{
+    background:rgba(255,255,255,.12);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.22);border-radius:100px;
+    padding:9px 22px;font-size:.9rem;letter-spacing:.02em;
+  }
+  .hero-stats b{color:#ffd98a;font-weight:700;}
+  .scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:.75rem;letter-spacing:.3em;animation:bob 2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+  /* ── 粘性导航 ── */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,244,238,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px;margin:0 auto;padding:12px 20px;
+    display:flex;align-items:center;gap:14px;overflow-x:auto;
+  }
+  .nav-inner .brand{font-weight:800;letter-spacing:.04em;color:var(--teal-d);white-space:nowrap;font-size:.98rem;}
+  .nav-pills{display:flex;gap:7px;margin-left:auto;}
+  .nav-pills a{
+    flex-shrink:0;text-decoration:none;color:var(--muted);
+    font-size:.82rem;font-weight:600;padding:6px 13px;border-radius:100px;
+    border:1px solid transparent;transition:.2s;white-space:nowrap;
+  }
+  .nav-pills a:hover{color:var(--teal-d);background:#fff;border-color:var(--line);}
+
+  /* ── 概览路线 ── */
+  .overview{max-width:1080px;margin:0 auto;padding:56px 20px 20px;}
+  .section-title{font-size:1.4rem;font-weight:800;letter-spacing:.03em;margin-bottom:6px;}
+  .section-title .en{color:var(--gold);font-size:.82rem;letter-spacing:.28em;text-transform:uppercase;display:block;margin-bottom:8px;font-weight:700;}
+  .route-line{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 6px;align-items:center;
+    font-size:.9rem;color:var(--muted);
+  }
+  .route-line .city{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;color:var(--ink);font-weight:600;box-shadow:var(--shadow);}
+  .route-line .arrow{color:var(--gold);font-weight:700;}
+
+  /* ── 每日区块 ── */
+  main{max-width:1080px;margin:0 auto;padding:20px;}
+  .day{
+    background:var(--card);border-radius:20px;box-shadow:var(--shadow);
+    overflow:hidden;margin:26px 0;border:1px solid var(--line);
+    scroll-margin-top:70px;
+  }
+  .day-head{
+    display:flex;gap:20px;align-items:flex-start;
+    padding:26px 28px 20px;border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .day-badge{
+    flex-shrink:0;width:64px;height:64px;border-radius:16px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#fff;font-weight:800;line-height:1;box-shadow:0 6px 16px rgba(0,0,0,.14);
+  }
+  .day-badge .d{font-size:.62rem;letter-spacing:.15em;opacity:.85;font-weight:600;}
+  .day-badge .n{font-size:1.7rem;margin-top:2px;}
+  .day-head .h-main{flex:1;min-width:0;}
+  .day-route{font-size:1.15rem;font-weight:800;letter-spacing:.02em;line-height:1.45;}
+  .day-route .sep{color:var(--gold);margin:0 7px;font-weight:600;}
+  .day-km{margin-top:7px;font-size:.86rem;color:var(--gold);font-weight:700;letter-spacing:.02em;}
+  .day-km .dot{opacity:.45;margin:0 8px;}
+  .day-meta{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-size:.78rem;font-weight:600;padding:4px 11px;border-radius:100px;background:#f0efe8;color:var(--muted);border:1px solid var(--line);}
+  .chip.stay{background:#eef6f2;color:var(--teal-d);border-color:#d3e8df;}
+  .chip.stay::before{content:"🛏 ";}
+
+  .day-body{padding:22px 28px 28px;}
+  .day-desc{color:#3a4649;font-size:.98rem;}
+  .tip{
+    margin-top:16px;background:#fdf7e9;border:1px solid #f0e2bf;border-left:4px solid var(--gold);
+    border-radius:10px;padding:12px 16px;font-size:.9rem;color:#7a5e1f;
+  }
+  .tip b{color:#8a6714;}
+
+  /* ── 景区卡片 ── */
+  .spots{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
+  .spot{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;
+    display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;
+  }
+  .spot:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+  .spot .ph{
+    position:relative;aspect-ratio:4/3;overflow:hidden;
+    display:flex;align-items:flex-end;
+  }
+  .spot .ph img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:transform .6s ease;z-index:2;
+  }
+  .spot:hover .ph img{transform:scale(1.07);}
+  .spot .ph .ph-name{
+    position:relative;z-index:3;color:#fff;font-weight:700;font-size:1.02rem;
+    padding:14px 16px;text-shadow:0 2px 10px rgba(0,0,0,.6);
+    background:linear-gradient(transparent,rgba(0,0,0,.55));width:100%;
+  }
+  .spot .intro{padding:14px 16px 16px;font-size:.87rem;color:#4a5659;line-height:1.7;}
+  /* 渐变占位（图片未加载或沙漠日） */
+  .ph.g1{background:linear-gradient(135deg,#d9a441,#b5701f,#7a4a15);}
+  .ph.g2{background:linear-gradient(135deg,#2f7d8a,#0e5560,#0a3d44);}
+  .ph.g3{background:linear-gradient(135deg,#8bbf6a,#4f9b57,#2f6b47);}
+  .ph.g4{background:linear-gradient(135deg,#e0b04a,#c98a3a,#8a4f22);}
+
+  footer{
+    text-align:center;padding:44px 20px 60px;color:var(--muted);font-size:.85rem;
+  }
+  footer .big{font-size:1.05rem;color:var(--teal-d);font-weight:700;margin-bottom:8px;letter-spacing:.05em;}
+  footer a{color:var(--gold);text-decoration:none;}
+
+  @media(max-width:600px){
+    .day-head{padding:20px;gap:14px;}
+    .day-body{padding:18px 20px 22px;}
+    .day-badge{width:54px;height:54px;}
+    .day-badge .n{font-size:1.4rem;}
+    .spots{grid-template-columns:1fr 1fr;gap:12px;}
+    .spot .intro{font-size:.8rem;}
+  }
+  @media(max-width:420px){.spots{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-inner">
+    <div class="kicker">Northern Xinjiang · Road Trip</div>
+    <h1>新疆北疆环线自驾</h1>
+    <div class="sub">乌鲁木齐出发 · 阿勒泰 · 喀纳斯 · 赛里木湖 · 那拉提 · 独库公路</div>
+    <div class="hero-stats">
+      <div class="stat"><b>8</b> 天 7 晚</div>
+      <div class="stat">全程约 <b>2500</b> 公里+</div>
+      <div class="stat"><b>包车</b> 自驾环线</div>
+    </div>
+  </div>
+  <div class="scroll-hint">向下滚动 ↓</div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <span class="brand">北疆环线 ·8日</span>
+    <div class="nav-pills">
+      <a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a><a href="#d4">D4</a>
+      <a href="#d5">D5</a><a href="#d6">D6</a><a href="#d7">D7</a><a href="#d8">D8</a>
+    </div>
+  </div>
+</nav>
+
+<section class="overview">
+  <div class="section-title"><span class="en">Route Overview</span>环线总览</div>
+  <p style="color:var(--muted);max-width:720px;">一条经典的北疆大环线：从乌鲁木齐向北穿越沙漠直抵阿勒泰，深入喀纳斯与禾木的秘境山水，再南下经魔鬼城、赛里木湖进入伊犁河谷，最后沿最美独库公路翻越天山返回。</p>
+  <div class="route-line" id="routeLine"></div>
+</section>
+
+<main id="days"></main>
+
+<footer>
+  <div class="big">旅途愉快 · 一路平安</div>
+  <div>行程仅供参考，请根据天气、路况与边防政策灵活调整 · 山区自驾注意慢行与油料补给</div>
+  <div style="margin-top:10px;font-size:.78rem;opacity:.8;">图片来源：Wikimedia Commons（CC 授权）</div>
+</footer>
+
+<script>
+// Wikimedia 永久图片链接（Special:FilePath 会重定向到真实图片）
+function wimg(name,w){return "https://commons.wikimedia.org/wiki/Special:FilePath/"+encodeURIComponent(name)+"?width="+(w||1000);}
+
+const badgeColors=["#c1873a","#2f7d8a","#3f9b74","#a8552f","#4f7bb0","#7a6bb0","#4f9b57","#b5603a"];
+
+const trip=[
+ {
+  day:1, from:"乌鲁木齐", to:"阿勒泰市", stay:"阿勒泰市区", dist:"约 470 km", drive:"纯车程 5–6 小时（大漠高速）",
+  extra:["S21 沙漠公路","全天长途"],
+  desc:"横穿古尔班通古特沙漠，途经乌伦古湖、卡拉麦里戈壁，全天长途赶路。傍晚抵达阿勒泰市区休整，为次日走阿禾公路加满油料、办理边防备案。",
+  spots:[
+   {name:"古尔班通古特沙漠",g:"g1",intro:"中国第二大沙漠，也是国内最大的固定、半固定沙漠。梭梭、红柳等耐旱植物固定着连绵沙垄，春季会开出成片短命植物花海。"},
+   {name:"乌伦古湖",g:"g2",img:"乌伦古湖-黄金海岸.jpg",intro:"准噶尔盆地北缘的大型湖泊，被称为“戈壁大海子”，水域辽阔、盛产冷水鱼，是长途穿越中难得的观景与补给点。"},
+   {name:"卡拉麦里戈壁",g:"g1",img:"MongolianWildHorse.jpg",intro:"卡拉麦里自然保护区所在，广袤荒漠草原是普氏野马、鹅喉羚等珍稀野生动物的家园，苍茫而辽阔。"}
+  ]
+ },
+ {
+  day:2, from:"阿勒泰市", to:"禾木村", stay:"禾木村内", dist:"约 180 km", drive:"纯车程 4–5 小时（阿禾山路慢）",
+  extra:["G681 阿禾公路","景观公路"],
+  desc:"全程走 G681 阿禾景观公路，途经乌希里克湿地、野卡峡、托勒海特高山草原、通巴原始森林，一路沉浸式穿越阿尔泰山腹地。抵达禾木游客中心换乘区间车进村，漫步禾木白桦林、禾木河木桥，傍晚登哈登观景台俯瞰村落全景。",
+  tip:"阿禾公路沿途无补给加油站，阿勒泰出发前务必满油；山区弯道密集，请限速慢行。",
+  spots:[
+   {name:"阿禾公路 G681",img:"新疆-禾木-白桦林 - panoramio.jpg",intro:"连接阿勒泰与禾木的高山景观公路，一路穿越湿地、峡谷、高山草原与原始森林，被誉为“最美中的最美”。"},
+   {name:"禾木村",img:"Hemu River and Mongolian Village.jpg",intro:"图瓦人聚居的古村落，以尖顶原木小屋、白桦林与禾木河闻名。清晨薄雾笼罩，被誉为“神的自留地”。"},
+   {name:"哈登观景台",g:"g3",img:"新疆-禾木喀拉斯乡白桦林中的晨曦 - panoramio.jpg",intro:"俯瞰禾木村全景的最佳机位，傍晚炊烟与暮色中的木屋群层层铺展，是拍摄村落全貌的经典位置。"}
+  ]
+ },
+ {
+  day:3, from:"禾木", to:"喀纳斯景区", stay:"喀纳斯景区内", dist:"约 65 km", drive:"纯车程 1.5–2 小时（当天多为区间车）",
+  extra:["三湾","喀纳斯湖"],
+  desc:"清晨可观赏禾木晨雾，之后前往喀纳斯。依次游览卧龙湾、月亮湾、神仙湾，沿喀纳斯湖畔徒步。留宿景区内部，方便隔天早起打卡神仙湾晨雾，省去往返车程。",
+  spots:[
+   {name:"卧龙湾",img:"喀纳斯 卧龙湾 - panoramio - neverdance (1).jpg",intro:"喀纳斯河在此舒缓成湾，水中沙洲形似卧龙，四周青松白桦环抱，水色碧绿如玉。"},
+   {name:"月亮湾",img:"Moon Bay on Kanas River, Xinjiang, China.jpg",intro:"喀纳斯最经典的景观，河湾形如弯月，河床上留有神秘“脚印”，晨昏色彩变幻莫测。"},
+   {name:"神仙湾",g:"g2",img:"喀纳斯山顶的白云 - panoramio.jpg",intro:"喀纳斯河上游湖湾，清晨云雾缭绕、水汽氤氲宛如仙境，是拍摄晨雾的绝佳地点。"},
+   {name:"喀纳斯湖",img:"Kanas Lake, Altay, China (Unsplash).jpg",intro:"深藏阿尔泰山中的高山湖泊，湖水随季节与光线呈现蓝、绿、灰多种颜色，流传着“湖怪”的传说。"}
+  ]
+ },
+ {
+  day:4, from:"喀纳斯", to:"乌尔禾世界魔鬼城", stay:"乌尔禾镇", dist:"约 420 km", drive:"纯车程 5–6 小时",
+  extra:["雅丹地貌","戈壁落日"],
+  desc:"早起观赏神仙湾晨雾后南下启程，告别阿勒泰山区，长途穿越戈壁荒漠。傍晚抵达魔鬼城，游览风蚀雅丹地貌，观赏戈壁落日风光。",
+  spots:[
+   {name:"乌尔禾世界魔鬼城",img:"G217 ghost city.jpg",intro:"典型的风蚀雅丹地貌，大风穿行土丘间发出呼啸声，故得名“魔鬼城”。落日时分土林被染成金红色，苍凉壮美。"},
+   {name:"戈壁落日",img:"中国新疆克拉玛依市魔鬼城 China Xinjiang, Karamay Ghost City China X - panoramio.jpg",intro:"夕阳西下，雅丹土林在低角度光线中拉出长长的阴影，色彩由金黄转为暗红，是摄影的黄金时刻。"}
+  ]
+ },
+ {
+  day:5, from:"乌尔禾", to:"赛里木湖", stay:"赛里木湖周边", dist:"约 500 km", drive:"纯车程 5.5–6.5 小时",
+  extra:["连霍高速","环湖自驾"],
+  desc:"西进驶入伊犁河谷地界，下午抵达赛里木湖，自驾环湖游览，打卡湖畔灯塔、西海草原，远眺果子沟大桥，静待高山湖泊日落。",
+  spots:[
+   {name:"赛里木湖",img:"The shore of Sayram Lake.jpg",intro:"大西洋暖湿气流所能抵达的最远处，被称为“大西洋最后一滴眼泪”。高山湖泊湛蓝纯净，环湖草原与雪山相映。"},
+   {name:"湖畔日落 · 西海草原",img:"Sunset upon the Lake Sayram.png",intro:"西岸开阔草原与标志性灯塔是环湖自驾与拍摄日落的经典机位，日落时湖天一色、静谧辽阔。"}
+  ]
+ },
+ {
+  day:6, from:"赛里木湖", to:"那拉提镇", stay:"那拉提", dist:"约 350 km", drive:"纯车程 4.5–5.5 小时",
+  extra:["果子沟大桥","伊宁补给"],
+  desc:"途经果子沟大桥，在伊宁休整补给物资，继续向东行进。傍晚抵达那拉提，休整适应高海拔草原气候。",
+  spots:[
+   {name:"果子沟大桥",img:"Guozigou Bridge - panoramio.jpg",intro:"新疆第一座斜拉桥，横跨果子沟峡谷，桥体凌空于峰谷之间，是伊犁河谷的门户地标。"},
+   {name:"伊宁",g:"g3",img:"Along the Ili River, Yining, Xinjiang 2020-10-03.jpg",intro:"伊犁哈萨克自治州首府，多民族聚居、物产丰饶，六星街等街区风情浓郁，是环线重要的补给与休整城市。"}
+  ]
+ },
+ {
+  day:7, from:"那拉提草原", to:"全天深度游览", stay:"那拉提", dist:"景区内游览", drive:"观光车为主 · 无长途",
+  extra:["空中草原","河谷草原"],
+  desc:"自主选择空中草原或河谷草原游览线路，乘坐景区观光车游览雪山草甸、溪流峡谷，自由安排徒步、拍照与休闲时间。",
+  spots:[
+   {name:"那拉提 · 空中草原",img:"Nalati Grassland 2.jpg",intro:"世界四大草原之一的亚高山草甸，海拔较高、视野开阔，雪山、森林与哈萨克毡房构成辽阔画卷。"},
+   {name:"那拉提 · 河谷草原",img:"Nalati Grassland 3.jpg",intro:"巩乃斯河谷两岸的低海拔草原，溪流蜿蜒、林木葱郁，适合悠闲徒步与拍照，牧场风情十足。"}
+  ]
+ },
+ {
+  day:8, from:"那拉提", to:"乌鲁木齐", stay:"行程结束", dist:"约 560 km", drive:"纯车程 8–10 小时 · 全程最累",
+  extra:["独库公路北段","独山子"],
+  desc:"全程走独库公路返程，翻越多个雪山垭口，一路饱览草原、峡谷、雪山多重风光。行至独山子接入高速，傍晚返回乌鲁木齐，行程圆满结束。",
+  tip:"这是全程最长、最累的一天。独库北段路窄弯多、旺季常堵车，务必清晨早出发，备足油料与干粮；若体力有限，可在独山子或奎屯加住一晚，把这天拆分成两段。",
+  spots:[
+   {name:"独库公路（北段）",img:"G217 Duku.jpg",intro:"连接独山子与库车的天山纵贯公路，“一天历四季，十里不同天”，翻越多个雪山达坂，被誉为中国最美公路之一。"}
+  ]
+ }
+];
+
+// 路线总览
+const cities=["乌鲁木齐","阿勒泰","禾木","喀纳斯","乌尔禾","赛里木湖","那拉提","独库公路","乌鲁木齐"];
+document.getElementById("routeLine").innerHTML=cities.map((c,i)=>
+  `<span class="city">${c}</span>`+(i<cities.length-1?`<span class="arrow">→</span>`:"")
+).join("");
+
+// 渲染每日
+document.getElementById("days").innerHTML=trip.map(d=>{
+  const color=badgeColors[d.day-1];
+  const spotsHTML=d.spots.map((s,i)=>{
+    const g=s.g||["g1","g2","g3"][i%3];
+    const imgTag=s.img
+      ? `<img src="${wimg(s.img,900)}" alt="${s.name}" loading="lazy"
+             onerror="this.style.display='none'">`
+      : "";
+    return `
+     <div class="spot">
+       <div class="ph ${g}">
+         ${imgTag}
+         <div class="ph-name">${s.name}</div>
+       </div>
+       <div class="intro">${s.intro}</div>
+     </div>`;
+  }).join("");
+
+  const chips=(d.extra||[]).map(e=>`<span class="chip">${e}</span>`).join("")
+             +`<span class="chip stay">${d.stay}</span>`;
+
+  return `
+   <section class="day" id="d${d.day}">
+     <div class="day-head">
+       <div class="day-badge" style="background:${color}">
+         <span class="d">DAY</span><span class="n">${d.day}</span>
+       </div>
+       <div class="h-main">
+         <div class="day-route">${d.from}<span class="sep">→</span>${d.to}</div>
+         ${d.dist?`<div class="day-km">📏 ${d.dist}<span class="dot">·</span>🚗 ${d.drive}</div>`:""}
+         <div class="day-meta">${chips}</div>
+       </div>
+     </div>
+     <div class="day-body">
+       <div class="day-desc">${d.desc}</div>
+       ${d.tip?`<div class="tip"><b>贴士 · </b>${d.tip}</div>`:""}
+       <div class="spots">${spotsHTML}</div>
+     </div>
+   </section>`;
+}).join("");
+</script>
+</body>
+</html>
